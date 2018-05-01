@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>{{currency.name}} Details</title>
+     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+ <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->	
+
+	<link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../static/blog-post1.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script>setInterval(function() {
+    $("#currencydetailstable").load(location.href+" #currencydetailstable>*","");
+}, 5000); // seconds to wait, miliseconds
+</script>
+
+</head>
+ 
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../static/images/logo.png" width="30" height="30">CryptoCare</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ 	<!--<div id="chartdiv"></div>-->
+   
+	
+	<div class="container">
+		
+
+      <div class="row">
+		  
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+       <div class="newrates1" id="currencydetailstable">
+		   <h4 class="mt-4" align="center">{{currency.name}} Details</h4>
+			 <b> {{currency_details.display_values.PRICE}}</b>
+		 
+          <!-- Title -->
+         <!-- -->
+			 <table style="width=100%" class="table">
+            <tr>
+                <th>Price</th>
+                <th>Open</th>
+                <th>Change</th>
+                <th>High</th>
+                <th>Low</th>
+            </tr>
+                <tr id="dataRow">
+                    <td>
+                       {{currency_details.display_values.PRICE}}       
+                    </td>
+                    <td>
+						{{currency_details.display_values.OPENDAY}} 
+					</td>
+                    <td>
+						{{currency_details.display_values.CHANGE24HOUR}} 
+					</td>
+                    <td>
+						{{currency_details.display_values.HIGH24HOUR}}  
+					</td>
+                    <td>
+						{{currency_details.display_values.LOW24HOUR}} 
+					</td>
+                </tr>
+        </table>
+        </div>
+			<div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Graph</span></a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>Social</span></a></li>
+          <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Market</span></a></li>
+          <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Prediction</span></a></li>
+          <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>History</span></a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home"><!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tv-medium-widget"></div>
+  <div class="tradingview-widget-copyright"><span class="blue-text"><a href="https://www.tradingview.com/symbols/BITFINEX-BTCUSD/" rel="noopener" target="_blank"><span class="blue-text">BitCoin</span></a></span> <span class="blue-text">Quotes</span> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.MediumWidget(
+  {
+  "container_id": "tv-medium-widget",
+  "symbols": [
+    [
+      "BitCoin",
+      "BITFINEX:BTCUSD|1y"
+    ]
+  ],
+  "greyText": "Quotes by",
+  "gridLineColor": "#e9e9ea",
+  "fontColor": "rgba(66, 66, 66, 1)",
+  "underLineColor": "#dbeffb",
+  "trendLineColor": "rgba(152, 152, 152, 1)",
+  "width": "700px",
+  "height": "400px",
+  "locale": "en"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END --></div>
+          <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+          <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+          <div role="tabpanel" class="tab-pane" id="settings">Prediction based on the historical and live data
+         <table class="table">
+             <tr>
+             <th>Day 1</th>
+			 <th>Day 2</th>
+			 <th>Day 3</th>
+			 <th>Day 4</th>
+			 
+			 </tr>
+			 <tr>
+             <td>$  {{ forecast_prediction[0] }}</td>
+             <td>$  {{ forecast_prediction[1] }} </td>
+             <td>$  {{ forecast_prediction[2] }} </td>
+             <td>$  {{ forecast_prediction[3] }} </td>
+
+             </tr></table></div>
+          <div role="tabpanel" class="tab-pane" id="extra">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+        </div>
+      </div>
+			 </div>
+		  
+
+        <!-- Sidebar Widgets Column -->
+ <div class="col-md-4">
+	<!-- Categories Widget -->
+    <div class="card my-4">
+    <div class="card-body">
+    <div class="row">
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/cryptocurrency" data-widget-id="970802186467688450" data-height="400" data-chrome=“nofooter transparent>#cryptocurrency Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+			
+			<!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+	
+	
+	
+	
+	<!--<div class="container">
+		<div class="row">
+            <h1>{{currency.name}} Details</h1>
+            
+            <ul>
+                <li>Price: {{currency_details.display_values.PRICE}}</li>
+                <li>Market: {{currency_details.display_values.MARKET}}</li>
+                <li>Last  Update: {{currency_details.display_values.LASTUPDATE}}</li>
+                <li>Last Volume: {{currency_details.display_values.LASTVOLUME}}</li>
+                <li>Last Volume to: {{currency_details.display_values.LASTVOLUMETO}}</li>
+                <li>Volume Day: {{currency_details.display_values.VOLUMEDAY}}</li>
+                <li>Volume Day to: {{currency_details.display_values.VOLUMEDAYTO}}</li>
+                <li>Volume 24 Hour: {{currency_details.display_values.VOLUME24HOUR}}</li>
+                <li>Volume 24 Hour to: {{currency_details.display_values.VOLUME24HOURTO}}</li>
+                <li>Open Day: {{currency_details.display_values.OPENDAY}}</li>
+                <li>High Day: {{currency_details.display_values.HIGHDAY}}</li>
+                <li>Low Day: {{currency_details.display_values.LOWDAY}}</li>
+                <li>Open 24 Hour: {{currency_details.display_values.OPEN24HOUR}}</li>
+                <li>High 24 Hour: {{currency_details.display_values.HIGH24HOUR}}</li>
+                <li>Low 24 Hour: {{currency_details.display_values.LOW24HOUR}}</li>
+                <li>Change 24 Hour: {{currency_details.display_values.CHANGE24HOUR}}</li>
+                <li>Change Day: {{currency_details.display_values.CHANGEDAY}}</li>
+                <li>Suppy: {{currency_details.display_values.SUPPLY}}</li>
+                <li>Market Cap: {{currency_details.display_values.MKTCAP}}</li>
+                <li>Total Colume 24 Hour: {{currency_details.display_values.TOTALVOLUME24H}}</li>
+                <li>Total Volume 24 Hour to: {{currency_details.display_values.TOTALVOLUME24HTO}}</li>
+            </ul>-->
+        
+    <!-- <div>
+        <button id="btn_graph" type="button">Graph</button>
+        <button id="btn_history" type="button">History</button>
+        <button id="btn_social" type="button">Social</button>
+        <button id="btn_market" type="button">market</button>
+        <button id="btn_prediction" type="button">Prediction</button>
+        <button id="btn_calculate" type="button">Calculate</button>
+        </div>-->
+   
+		
+		
+		 <!-- Sidebar Widgets Column -->
+ <!--<<div class="col-md-4">-->
+	<!-- Categories Widget -->
+   <!-- <div class="card my-4">
+    <div class="card-body">
+    <div class="row">
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/cryptocurrency" data-widget-id="970802186467688450" data-height="400" data-chrome=“nofooter transparent>#cryptocurrency Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              </div>
+            </div>
+          </div>-->
+
+          <!-- Side Widget -->
+        <!--  <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>-->
+			
+			<!-- Side Widget -->
+         <!-- <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+
+      </div>
+	</div>
+    </div>-->
+<!--Container End-->
+	
+    <!--<script>
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "serial",
+  "addClassNames": true,
+  "theme": "light",
+  "autoMargins": true,
+  "marginLeft": 30,
+  "marginRight": 8,
+  "marginTop": 10,
+  "marginBottom": 26,
+  "balloon": {
+    "adjustBorderColor": false,
+    "horizontalPadding": 10,
+    "verticalPadding": 8,
+    "color": "#ffffff"
+  },
+
+  "dataProvider": [ {
+"price":9000,
+"time":1
+},
+{
+"price":9000,
+"time":2
+},
+{
+"price":10000,
+"time":3
+},
+{
+"price":11000,
+"time":4
+},
+{
+"price":5000,
+"time":5
+},
+{
+"price":7000,
+"time":6
+},
+{
+"price":4000,
+"time":7
+},],
+  "valueAxes": [ {
+    "axisAlpha": 0,
+    "position": "left"
+  } ],
+  "startDuration": 1,
+  "graphs": [ {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] at [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "BitCoin Rate",
+    "type": "column",
+    "valueField": "price",
+    "dashLengthField": "dashLengthColumn"
+  }],
+  "categoryField": "time",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "axisAlpha": 0,
+    "tickLength": 0
+  },
+  "export": {
+    "enabled": false
+  }
+} 
+);
+</script>
+         
+    
+	<style>
+#chartdiv {
+  width: 500px;
+  height: 300px;
+}	
+</style>-->
+	
+	
+	
+	 <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

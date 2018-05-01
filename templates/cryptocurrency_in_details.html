@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>{{currency.name}} Details</title>
+     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+ <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->	
+
+	<link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../static/blog-post1.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script>setInterval(function() {
+    $("#currencydetailstable").load(location.href+" #currencydetailstable>*","");
+}, 5000); // seconds to wait, miliseconds
+</script>
+
+</head>
+ 
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../static/images/logo.png" width="30" height="30">CryptoCare</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ 	<!--<div id="chartdiv"></div>-->
+   
+	
+	<div class="container">
+		
+
+      <div class="row">
+		  
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+       <div class="newrates1" id="currencydetailstable">
+		   <h4 class="mt-4" align="center">{{currency.name}} Details</h4>
+			 <b> {{currency.PRICE}}</b>
+		 
+          <!-- Title -->
+         <!-- -->
+			 <table style="width=100%" class="table">
+           <tr>
+                <!--<th>Price</th>-->
+                <th>Open</th>
+                <th>Close</th>
+                <th>High</th>
+                <th>Low</th>
+            </tr>
+                <tr id="dataRow">
+                    <!--<td>-->
+                       <!--{{currency.PRICE}}-->
+                    <!--</td>-->
+                    <td>
+						{{currency.cr_open}}
+					</td>
+                    <td>
+						{{currency.cr_close}}
+					</td>
+                    <td>
+						{{currency.cr_high}}
+					</td>
+                    <td>
+						{{currency.cr_low}}
+					</td>
+                </tr>
+        </table>
+        </div>
+			<div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>Graph</span></a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>News</span></a></li>
+          <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>Market</span></a></li>
+          <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Prediction</span></a></li>
+          <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-plus-square-o"></i>  <span>History</span></a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home"><!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tv-medium-widget"></div>
+  <div class="tradingview-widget-copyright"><span class="blue-text"><a href="https://www.tradingview.com/symbols/BITFINEX-BTCUSD/" rel="noopener" target="_blank"><span class="blue-text">BitCoin</span></a></span> <span class="blue-text">Quotes</span> by TradingView</div>
+
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.MediumWidget(
+  {
+  "container_id": "tv-medium-widget",
+  "symbols": [
+    [
+      "BitCoin",
+      "BITFINEX:BTCUSD|1y"
+    ]
+  ],
+  "greyText": "Quotes by",
+  "gridLineColor": "#e9e9ea",
+  "fontColor": "rgba(66, 66, 66, 1)",
+  "underLineColor": "#dbeffb",
+  "trendLineColor": "rgba(152, 152, 152, 1)",
+  "width": "700px",
+  "height": "400px",
+  "locale": "en"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END --></div>
+          <div role="tabpanel" class="tab-pane" id="profile">
+              <ul id="ul_news">
+<!--
+                    <li>
+                        <img src="" style="width: 50px; height: 50px">
+                        <title href=""></title>
+                        <p></p>
+                    </li>
+-->
+            </ul>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="messages">
+              <ul>
+                <li id='CHANGE24HOUR'></li>
+                <li id='CHANGEDAY'></li>
+                <li id='CHANGEPCT24HOUR'></li>
+                <li id='CHANGEPCTDAY'></li>
+                <li id='FROMSYMBOL'></li>
+                <li id='HIGH24HOUR'></li>
+                <li id='HIGHDAY'></li>
+                <li id='LASTMARKET'></li>
+                <li id='LASTTRADEID'></li>
+                <li id='LASTUPDATE'></li>
+                <li id='LASTVOLUME'></li>
+                <li id='LASTVOLUMETO'></li>
+                <li id='LOW24HOUR'></li>
+                <li id='LOWDAY'></li>
+                <li id='MARKET'></li>
+                <li id='MKTCAP'></li>
+                <li id='OPEN24HOUR'></li>
+                <li id='OPENDAY'></li>
+                <li id='PRICE'></li>
+                <li id='SUPPLY'></li>
+                <li id='TOSYMBOL'></li>
+                <li id="TOTALVOLUME24H"></li>
+                <li id="TOTALVOLUME24HTO"></li>
+                <li id="VOLUME24HOUR"></li>
+                <li id="VOLUME24HOURTO"></li>
+                <li id="VOLUMEDAY"></li>
+                <li id="VOLUMEDAYTO"></li>
+
+
+
+            </ul>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="settings"><div id="prediction">
+                <h5 id='next_day'></h5>
+                <h4 id='prediction_value'></h4>
+            </div></div>
+          <div role="tabpanel" class="tab-pane" id="extra">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+        </div>
+      </div>
+			 </div>
+		  
+
+        <!-- Sidebar Widgets Column -->
+ <div class="col-md-4">
+	<!-- Categories Widget -->
+    <div class="card my-4">
+    <div class="card-body">
+    <div class="row">
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/cryptocurrency" data-widget-id="970802186467688450" data-height="400" data-chrome=“nofooter transparent>#cryptocurrency Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+			
+			<!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+	
+	
+	
+	
+
+	
+	
+	
+	 <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <input id="input_asset_id" type="hidden" value="{{currency.asset_id}}"/>
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+function myFunction() {
+    var x = document.getElementById("toggle");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+    <script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery-3.3.1.js') }}">\x3C/script>')</script>
+    <script>
+
+     $(document).ready(function () {
+         console.log("in document.ready")
+    getNews();
+         getmarketDetails();
+         getMultipleSymbolPrice();
+          getPrediction();
+    });
+
+      //News
+  function getNews(){
+      $.getJSON($SCRIPT_ROOT + '/news', {
+        asset_id: $('#input_asset_id').val()
+      }, function(data) {
+           if( data[0].status =="success"){
+               if(data[1].status=="ok"){
+//                   articles = JSON.parse(data[1].articles)
+//                   console.log(typeof(articles))
+//                   console.log(articles)
+                articles_list = data[1].articles
+                   console.log(articles_list)
+                   $('#ul_news').empty()
+                   for(i =0;i< articles_list.length;i++){
+                       article = articles_list[i]
+                       console.log(article.author)
+                      _li = '<li>'+
+                       '<img src="'+article.urlToImage+'" style="width: 50px; height: 50px">'+
+                        '<h3 href="'+article.url+'">'+article.title+'</h3>'+
+                        '<h6>'+article.description+'</h6>'+
+                        '</li>'
+
+                       $('#ul_news').append(_li)
+
+                   }
+               }
+
+           }else{
+           alert("Oops! Something went wrong.");
+           }
+      });
+      return false;
+  }
+
+    //Market Details
+  function getmarketDetails(){
+  asset_id = $('#input_asset_id').val()
+
+      $.getJSON($SCRIPT_ROOT + '/market_details', {
+        asset_id: asset_id
+      }, function(data) {
+           if( data[0].status =="success"){
+           display = data[1].DISPLAY[asset_id].USD
+           console.log(display)
+        document.getElementById('CHANGE24HOUR').innerHTML='CHANGE24HOUR: '+display.CHANGE24HOUR;
+               document.getElementById('CHANGEDAY').innerHTML='CHANGEDAY: '+display.CHANGEDAY;
+               document.getElementById('CHANGEPCT24HOUR').innerHTML='CHANGEPCT24HOUR: '+display.CHANGEPCT24HOUR;
+               document.getElementById('CHANGEPCTDAY').innerHTML='CHANGEPCTDAY: '+display.CHANGEPCTDAY;
+               document.getElementById('FROMSYMBOL').innerHTML='FROMSYMBOL: '+display.FROMSYMBOL;
+               document.getElementById('HIGH24HOUR').innerHTML='HIGH24HOUR: '+display.HIGH24HOUR;
+               document.getElementById('HIGHDAY').innerHTML='HIGHDAY: '+display.HIGHDAY;
+               document.getElementById('LASTMARKET').innerHTML='LASTMARKET: '+display.LASTMARKET;
+               document.getElementById('LASTTRADEID').innerHTML='LASTTRADEID: '+display.LASTTRADEID;
+               document.getElementById('LASTUPDATE').innerHTML='LASTUPDATE: '+display.LASTUPDATE;
+               document.getElementById('LASTVOLUME').innerHTML='LASTVOLUME: '+display.LASTVOLUME;
+               document.getElementById('LASTVOLUMETO').innerHTML='LASTVOLUMETO: '+display.LASTVOLUMETO;
+               document.getElementById('LOW24HOUR').innerHTML='LOW24HOUR: '+display.LOW24HOUR;
+               document.getElementById('LOWDAY').innerHTML='LOWDAY: '+display.LOWDAY;
+               document.getElementById('MARKET').innerHTML='MARKET: '+display.MARKET;
+               document.getElementById('MKTCAP').innerHTML='MKTCAP: '+display.MKTCAP;
+               document.getElementById('OPEN24HOUR').innerHTML='OPEN24HOUR: '+display.OPEN24HOUR;
+               document.getElementById('OPENDAY').innerHTML='OPENDAY: '+display.OPENDAY;
+               document.getElementById('PRICE').innerHTML='PRICE: '+display.PRICE;
+               document.getElementById('SUPPLY').innerHTML='SUPPLY: '+display.SUPPLY;
+               document.getElementById('TOSYMBOL').innerHTML='TOSYMBOL: '+display.TOSYMBOL;
+               document.getElementById('TOTALVOLUME24H').innerHTML='TOTALVOLUME24H: '+display.TOTALVOLUME24H;
+               document.getElementById('TOTALVOLUME24HTO').innerHTML='TOTALVOLUME24HTO: '+display.TOTALVOLUME24HTO;
+               document.getElementById('VOLUME24HOUR').innerHTML='VOLUME24HOUR: '+display.VOLUME24HOUR;
+               document.getElementById('VOLUME24HOURTO').innerHTML='VOLUME24HOURTO: '+display.VOLUME24HOURTO;
+               document.getElementById('VOLUMEDAY').innerHTML='VOLUMEDAY: '+display.VOLUMEDAY;
+               document.getElementById('VOLUMEDAYTO').innerHTML='VOLUMEDAYTO: '+display.VOLUMEDAYTO;
+           }else{
+           alert("Oops! Something went wrong.");
+           }
+      });
+      return false;
+
+  }
+
+//Prediction
+ function getPrediction() {
+      $.getJSON($SCRIPT_ROOT + '/prediction', {
+        asset_id: $('#input_asset_id').val()
+      }, function(data) {
+            console.log(data)
+          var today = new Date()
+          var tomorrow = new Date();
+          tomorrow.setDate(today.getDate()+1);
+          tomorrow_date = tomorrow.getMonth()+"/"+tomorrow.getDate()+"/"+tomorrow.getFullYear()
+          document.getElementById('next_day').innerHTML = tomorrow_date
+          document.getElementById('prediction_value').innerHTML = "Prediction: $"+data[1].prediction
+      });
+      return false;
+
+  }
+
+
+  function getMultipleSymbolPrice(){
+      $.getJSON($SCRIPT_ROOT + '/multiple_symbol_price', {
+        asset_id: $('#input_asset_id').val()
+      }, function(data) {
+          multiple_symbols_price_list = data[1]
+           console.log(multiple_symbols_price_list)
+          console.log(typeof multiple_symbols_price_list)
+      });
+      return false;
+
+  }
+
+
+     </script>
+</body>
+</html>

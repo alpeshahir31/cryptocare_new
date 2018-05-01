@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/blog-post.css" rel="stylesheet">
+
+    <title>CryptoCare</title>
+    <link rel="shortcut icon" href="../static/images/logo_bQ8_icon.ico" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="../static/images/logo.png" width="30" height="30">CryptoCare</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h4 class="mt-4" align="center">All Cryptocurrecies</h4>
+
+            <table id="currencytable" style="width=100%" class="table">
+                <tr>
+                    <th></th>
+                    <th>Coin</th>
+                    <th>Price</th>
+                    <th>Last Volume To</th>
+                    <th>Total Vol. 24Hr</th>
+                    <th>Open Vol. 24Hr</th>
+                    <th>High Vol. 24Hr</th>
+                    <th>Low Vol. 24Hr</th>
+                    <th>Change 24HR (%)</th>
+                </tr>
+                <!--
+                                {% for cryptocurrency in cryptocurrencies %}
+                                <tr id="dataRow">
+                                    <td>
+                                        <a href="{{cryptocurrency.asset_id}}">{{cryptocurrency.name}}</a>
+                                    </td>
+                                    <td>
+                                        &#x24;{{cryptocurrency.cr_open}}
+                                    </td>
+                                    <td>
+                                        &#x24;{{cryptocurrency.cr_close}}
+                                    </td>
+                                    <td>
+                                        &#x24;{{cryptocurrency.cr_high}}
+                                    </td>
+                                    <td>
+                                        &#x24;{{cryptocurrency.cr_low}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                -->
+                <tbody id="cr_list">
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <div class="row">
+                        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/cryptocurrency"
+                           data-widget-id="970802186467688450" data-height="400" data-chrome=“nofooter transparent>#cryptocurrency
+                            Tweets</a>
+                        <script>
+                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+
+
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the
+                    new Bootstrap 4 card containers!
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the
+                    new Bootstrap 4 card containers!
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery-3.3.1.js') }}">\x3C/script>')
+</script>
+    
+<script>
+    var currency_interval;
+
+    $(document).ready(function () {
+     getCurrenciesList();
+    });
+
+        //Get list of Cyrptocurrencies with their symbol and favicon
+    function getCurrenciesList(){
+            $.getJSON($SCRIPT_ROOT+'/cryptocurrency_list',function(data){
+               if( data[0].status =="success"){
+                   var i = 0;
+                        var cr_list_json = JSON.parse(data[1])
+                        console.log(cr_list_json)
+                    for (i; i < cr_list_json.length; i++) {
+                    console.log(cr_list_json[i].symbol);
+                    $("#cr_list").append("<tr id='" + cr_list_json[i].symbol + "'>" +
+                        "<td><img style='width:25px;height:25px' id='img_" + cr_list_json[i].symbol + "'></img></td>" +
+                        "<td><a href='" + cr_list_json[i].symbol + "'>" + cr_list_json[i].name + "</a></td>" +
+                        "<td id='" + cr_list_json[i].symbol + "_cr_price'>&#x24;00.00</td>" +
+                        "<td id='" + cr_list_json[i].symbol + "_cr_last_vol_to'>&#x24;00.00</td>" +
+                        "<td id='" + cr_list_json[i].symbol + "_cr_vol_24_hr'>&#x24;00.00</td>" +
+                        "<td id='" + cr_list_json[i].symbol + "_cr_open_24_hr_open_24_hr'>&#x24;00.00</td>" +
+                                         "<td id='" + cr_list_json[i].symbol + "_cr_high_24_hr'>&#x24;00.00</td>" +
+                        "<td id='" + cr_list_json[i].symbol + "_cr_low_24_hr'>&#x24;00.00</td>" +
+                        "<td id='" + cr_list_json[i].symbol + "cr_change_24_hr'>00.00</td>" +
+                        "</tr>");
+
+
+                    loadGraphics(cr_list_json[i].symbol, cr_list_json[i].image_url)
+                        getCurrencyData(cr_list_json[i].symbol)
+                }
+
+                   }else{
+                   alert("Oops! Something went wrong.");
+                }
+
+            })
+    }
+
+    //Load Favicon image for each currency
+    function loadGraphics(cr_symbol,url){
+        document.getElementById("img_"+cr_symbol).src = "";
+        document.getElementById("img_"+cr_symbol).src = "https://www.cryptocompare.com"+url;
+    }
+
+
+    //Function to call cyrptocurrencies list after every second
+    function getCurrencyData(cr_symbol){
+
+        function getCurrency_data(symbol){
+                $.getJSON($SCRIPT_ROOT+'/currency_meta_data',{
+            cr_id: cr_symbol
+          } ,function(data){
+                    console.log(data)
+                   if(data[0].status =="failed"){
+                        clearInterval(currency_interval);
+                        //alert("Oops! Something went wrong.");
+                   }else{
+                       var cr_data_json = JSON.parse(data[1])
+
+                       document.getElementById(cr_symbol+'_cr_price').innerHTML=""+cr_data_json.cr_price
+                       document.getElementById(cr_symbol+'_cr_last_vol_to').innerHTML=""+cr_data_json.cr_last_vol_to
+                       document.getElementById(cr_symbol+'_cr_vol_24_hr').innerHTML=""+cr_data_json.cr_vol_24_hr
+                       document.getElementById(cr_symbol+'_cr_open_24_hr_open_24_hr').innerHTML=""+cr_data_json.cr_open_24_hr
+                       document.getElementById(cr_symbol+'_cr_high_24_hr').innerHTML=""+cr_data_json.cr_high_24_hr
+                       document.getElementById(cr_symbol+'_cr_low_24_hr').innerHTML=""+cr_data_json.cr_low_24_hr
+                       document.getElementById(cr_symbol+'cr_change_24_hr').innerHTML=cr_data_json.cr_change_24_hr
+                   }
+
+                })
+        }
+
+        currency_interval = setInterval( getCurrency_data,500);
+    }
+
+</script>
+</html>
